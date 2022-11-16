@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Splityway",
+    "slug": "Splityway",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
