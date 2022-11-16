@@ -7,6 +7,7 @@ export declare global {
       expenses: undefined;
       addItem: undefined;
       payment: undefined;
+      finalization: undefined;
     }
   }
 }

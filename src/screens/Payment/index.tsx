@@ -1,8 +1,9 @@
 import React from 'react';
 import { Header } from '../../components/Header';
+import { useNavigation } from '@react-navigation/native';
+
 import { MainButton } from '../../components/MainButton';
 import { ResumeCard } from '../../components/ResumeCard';
-
 import {
   Container,
   Content,
@@ -11,8 +12,10 @@ import {
 
 export function Payment() {
 
-  function handleDone() {
+  const navigation = useNavigation();
 
+  function handleDone() {
+    navigation.navigate('finalization');
   }
 
   return (

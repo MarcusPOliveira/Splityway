@@ -7,6 +7,7 @@ import { AddFriend } from '../screens/AddFriend';
 import { Expenses } from '../screens/Expenses';
 import { AddItem } from '../screens/AddItem';
 import { Payment } from '../screens/Payment';
+import { Finalization } from '../screens/Finalization';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -39,6 +40,10 @@ export function AppStackRoutes() {
       <Screen
         name="payment"
         component={Payment}
+      />
+      <Screen
+        name="finalization"
+        component={Finalization}
       />
     </Navigator>
   );
