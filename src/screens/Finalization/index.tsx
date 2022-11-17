@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import DoneImg from '../../assets/done.png';
 import { SecondaryButton } from '../../components/SecondaryButton';
@@ -13,8 +14,10 @@ import {
 
 export function Finalization() {
 
-  function handleDone() {
+  const navigation = useNavigation();
 
+  function handleDone() {
+    navigation.navigate('home');
   }
 
   return (
