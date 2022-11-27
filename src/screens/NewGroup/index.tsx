@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { MapPin, Calendar, CheckCircle } from 'phosphor-react-native';
+import uuid from 'react-native-uuid';
 import { useNavigation } from '@react-navigation/native';
 
 import { groupCreate } from '../../storage/group/groupCreate';
@@ -31,11 +32,11 @@ export function NewGroup() {
   }
 
   async function handleNext() {
-    const data = { name, date, status };
+    const data = { id: JSON.stringify(uuid.v4()), name, date, status };
     console.log("Dados: ", data)
     const newGroup = await groupCreate(data);
     console.log("AsyncStorage: ", newGroup)
-    navigation.navigate('addFriend');
+    navigation.navigate('addFriend', { data });
   }
 
   return (

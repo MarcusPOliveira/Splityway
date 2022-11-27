@@ -23,7 +23,7 @@ export function ResumeCard({ isPaid = false, ...rest }: Props) {
 
   const Friends = [
     {
-      name: 'Maria Clara',
+      name: 'Maria',
       amount: 'R$35,50'
     },
     {
