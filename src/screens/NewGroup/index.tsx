@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { MapPin, Calendar, CheckCircle } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { groupCreate } from '../../storage/group/groupCreate';
+import { GroupDTO } from '../../DTOs/GroupDTO';
 import { Header } from '../../components/Header';
 import { NameInput } from '../../components/Forms/NameInput';
 import { DateInput } from '../../components/Forms/DateInput';
@@ -18,6 +20,9 @@ import {
 } from './styles';
 
 export function NewGroup() {
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('26/11/22');
+  const [status, setStatus] = useState('Em aberto');
 
   const navigation = useNavigation();
 
@@ -25,7 +30,11 @@ export function NewGroup() {
     navigation.goBack();
   }
 
-  function handleNext() {
+  async function handleNext() {
+    const data = { name, date, status };
+    console.log("Dados: ", data)
+    const newGroup = await groupCreate(data);
+    console.log("AsyncStorage: ", newGroup)
     navigation.navigate('addFriend');
   }
 
@@ -46,6 +55,8 @@ export function NewGroup() {
               autoCorrect
               autoCapitalize='words'
               maxLength={20}
+              value={name}
+              onChangeText={setName}
             />
             <InputLabel>Data</InputLabel>
             <DateInput
@@ -53,11 +64,14 @@ export function NewGroup() {
               iconName={Calendar}
               keyboardType='number-pad'
               maxLength={8}
+              value={date}
+              onChangeText={setDate}
             />
             <InputLabel>Status</InputLabel>
             <StatusSpinner
               iconName={CheckCircle}
-              value='Em aberto'
+              value={status}
+              onChangeText={setStatus}
             />
           </Forms>
         </Content>
